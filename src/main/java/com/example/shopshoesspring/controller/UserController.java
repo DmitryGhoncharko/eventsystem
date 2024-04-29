@@ -30,4 +30,8 @@ public class UserController {
     public String loginPage() {
         return "login";
     }
+    @GetMapping("/error")
+    public String errorPage() {
+        return "error";
+    }
 }
