@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Update Event</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        header {
+            background-color: #333;
+            color: #fff;
+            padding: 20px 0;
+            text-align: center;
+        }
+
+        footer {
+            background-color: #333;
+            color: #fff;
+            padding: 20px 0;
+            text-align: center;
+            margin-top: 50px;
+        }
+    </style>
+</head>
+<body>
+<header>
+    <div class="container">
+        <a href="/admin/home">Мероприятия</a>
+        <nav class="nav justify-content-center">
+            <a class="nav-link" href="/admin/addType">Добавить тип мероприятия</a>
+            <a class="nav-link" href="/admin/addMr">Добавить мероприятие</a>
+            <a class="nav-link" href="/admin/mrTypeList">Список типов мероприятий</a>
+            <a class="nav-link" href="/admin/mrList">Список мероприятий</a>
+            <a class="nav-link" href="/admin/requestsList">Заявки на мероприятия</a>
+            <a class="nav-link" href="/admin/usersListPage">Пользователи</a>
+            <a class="nav-link" href="/admin/addUserPage">Добавить пользователя</a>
+            <a class="nav-link" href="/logout">Выйти</a>
+        </nav>
+    </div>
+</header>
+
+<div class="container">
+    <form action="/admin/updateMr" method="post" th:object="${mr}">
+        <input type="hidden" id="id" name="id" th:value="*{id}">
+        <div class="form-group">
+            <label for="mrName">Название мероприятия:</label>
+            <input type="text" class="form-control" id="mrName" name="mrName" th:value="*{mrName}" required>
+        </div>
+        <div class="form-group">
+            <label for="mrType">Тип мероприятия:</label>
+            <select class="form-control" id="mrType" name="mrType.id" required>
+                <option value="">Выберите тип мероприятия</option>
+                <option th:each="mrType : ${mrTypes}" th:value="${mrType.id}" th:text="${mrType.mrTypeName}" th:selected="${mrType.id == mr.mrType.id}"></option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="mrDescription">Описание мероприятия:</label>
+            <textarea class="form-control" id="mrDescription" name="mrDescription" rows="3" required th:text="*{mrDescription}"></textarea>
+        </div>
+        <div class="form-group">
+            <label for="mrDateStart">Дата начала:</label>
+            <input type="date" class="form-control" id="mrDateStart" name="mrDateStart" th:value="${#dates.format(mr.mrDateStart, 'yyyy-MM-dd')}" required>
+        </div>
+        <div class="form-group">
+            <label for="mrDateEnd">Дата окончания:</label>
+            <input type="date" class="form-control" id="mrDateEnd" name="mrDateEnd" th:value="${#dates.format(mr.mrDateEnd, 'yyyy-MM-dd')}" required>
+        </div>
+        <button type="submit" class="btn btn-primary">Обновить</button>
+    </form>
+
+
+</div>
+
+<footer>
+    <div class="container">
+        <p>Contact Information: +375447860021</p>
+    </div>
+</footer>
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

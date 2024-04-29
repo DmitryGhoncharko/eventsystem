@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Добавление пользователя</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        header {
+            background-color: #333;
+            color: #fff;
+            padding: 20px 0;
+            text-align: center;
+        }
+
+        footer {
+            background-color: #333;
+            color: #fff;
+            padding: 20px 0;
+            text-align: center;
+            margin-top: 50px;
+        }
+    </style>
+</head>
+<body>
+<header>
+    <div class="container">
+        <a href="/admin/home">Мероприятия</a>
+        <nav class="nav justify-content-center">
+            <a class="nav-link" href="/admin/addType">Добавить тип мероприятия</a>
+            <a class="nav-link" href="/admin/addMr">Добавить мероприятие</a>
+            <a class="nav-link" href="/admin/mrTypeList">Список типов мероприятий</a>
+            <a class="nav-link" href="/admin/mrList">Список мероприятий</a>
+            <a class="nav-link" href="/admin/requestsList">Заявки на мероприятия</a>
+            <a class="nav-link" href="/admin/usersListPage">Пользователи</a>
+            <a class="nav-link" href="/admin/addUserPage">Добавить пользователя</a>
+            <a class="nav-link" href="/logout">Выйти</a>
+        </nav>
+    </div>
+</header>
+<div class="container">
+    <h2 class="text-center mt-5 mb-3">Добавление пользователя</h2>
+    <form action="/admin/addUser" method="post">
+        <div class="form-group">
+            <label for="userLogin">Логин пользователя:</label>
+            <input type="text" class="form-control" id="userLogin" name="userLogin">
+        </div>
+        <div class="form-group">
+            <label for="userPassword">Пароль пользователя:</label>
+            <input type="password" class="form-control" id="userPassword" name="userPassword">
+        </div>
+        <div class="form-group">
+            <label for="userRole">Роль пользователя:</label>
+            <select class="form-control" id="userRole" name="userRole">
+                <option value="admin">Админ</option>
+                <option value="client">Клиент</option>
+            </select>
+        </div>
+        <button type="submit" class="btn btn-primary">Добавить</button>
+    </form>
+</div>
+
+<footer>
+    <div class="container">
+        <p>Контактная информация:  +375447860021</p>
+    </div>
+</footer>
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

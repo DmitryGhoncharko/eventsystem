@@ -1,0 +1,78 @@
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Главная страница</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        header {
+            background-color: #333;
+            color: #fff;
+            padding: 20px 0;
+            text-align: center;
+        }
+
+        .gallery img {
+            max-width: 100%;
+            height: auto;
+            margin-bottom: 20px;
+        }
+
+        .carousel-item img {
+            max-height: 300px;
+            width: auto;
+            margin: 0 auto;
+        }
+
+        footer {
+            background-color: #333;
+            color: #fff;
+            padding: 20px 0;
+            text-align: center;
+            margin-top: 50px;
+        }
+    </style>
+</head>
+<body>
+<header>
+    <div class="container">
+        <a href="/admin/home">Мероприятия</a>
+        <nav class="nav justify-content-center">
+            <a class="nav-link" href="/client/mrList">Просмотр мероприятий</a>
+            <a class="nav-link" href="/client/requestList">Заявки</a>
+            <a class="nav-link" href="/logout">Выйти</a>
+        </nav>
+    </div>
+</header>
+
+
+
+<div class="container">
+    <h2 class="text-center mt-5 mb-3">Типы мероприятий</h2>
+    <div class="row">
+        <div class="col-md-12">
+            <ul class="list-group">
+                <li th:each="type : ${mrType}" class="list-group-item">
+                    <a th:href="@{'/client/mrListType/' + ${type.id}}" th:text="${type.mrTypeName}"></a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+
+<footer>
+    <div class="container">
+        <p>Контактная информация:  +375447860021</p>
+    </div>
+</footer>
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

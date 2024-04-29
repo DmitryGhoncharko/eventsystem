@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Список мероприятий</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        header {
+            background-color: #333;
+            color: #fff;
+            padding: 20px 0;
+            text-align: center;
+        }
+
+        footer {
+            background-color: #333;
+            color: #fff;
+            padding: 20px 0;
+            text-align: center;
+            margin-top: 50px;
+        }
+    </style>
+</head>
+<body>
+<header>
+    <div class="container">
+        <a href="/admin/home">Мероприятия</a>
+        <nav class="nav justify-content-center">
+            <a class="nav-link" href="/admin/addType">Добавить тип мероприятия</a>
+            <a class="nav-link" href="/admin/addMr">Добавить мероприятие</a>
+            <a class="nav-link" href="/admin/mrTypeList">Список типов мероприятий</a>
+            <a class="nav-link" href="/admin/mrList">Список мероприятий</a>
+            <a class="nav-link" href="/admin/requestsList">Заявки на мероприятия</a>
+            <a class="nav-link" href="/admin/usersListPage">Пользователи</a>
+            <a class="nav-link" href="/admin/addUserPage">Добавить пользователя</a>
+            <a class="nav-link" href="/logout">Выйти</a>
+        </nav>
+    </div>
+</header>
+
+<div class="container mt-5">
+    <table class="table">
+        <thead>
+        <tr>
+            <th scope="col">ID</th>
+            <th scope="col">Название мероприятия</th>
+            <th scope="col">Тип мероприятия</th>
+            <th scope="col">Описание</th>
+            <th scope="col">Дата начала</th>
+            <th scope="col">Дата окончания</th>
+            <th scope="col">Действия</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="mr : ${mrList}">
+            <td th:text="${mr.id}"></td>
+            <td th:text="${mr.mrName}"></td>
+            <td th:text="${mr.mrType.mrTypeName}"></td>
+            <td th:text="${mr.mrDescription}"></td>
+            <td th:text="${#temporals.format(mr.mrDateStart, 'yyyy-MM-dd')}"></td>
+            <td th:text="${#temporals.format(mr.mrDateEnd, 'yyyy-MM-dd')}"></td>
+            <td>
+                <a th:href="@{/admin/updateMr/{id}(id=${mr.id})}" class="btn btn-primary">Обновить</a>
+                <a th:href="@{/admin/deleteMr/{id}(id=${mr.id})}" class="btn btn-danger">Удалить</a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+<footer>
+    <div class="container">
+        <p>Контактная информация: +375447860021</p>
+    </div>
+</footer>
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

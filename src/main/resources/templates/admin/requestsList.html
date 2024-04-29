@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Главная страница</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        header {
+            background-color: #333;
+            color: #fff;
+            padding: 20px 0;
+            text-align: center;
+        }
+
+        footer {
+            background-color: #333;
+            color: #fff;
+            padding: 20px 0;
+            text-align: center;
+            margin-top: 50px;
+        }
+    </style>
+</head>
+<body>
+<header>
+    <div class="container">
+        <a href="/admin/home">Мероприятия</a>
+        <nav class="nav justify-content-center">
+            <a class="nav-link" href="/admin/addType">Добавить тип мероприятия</a>
+            <a class="nav-link" href="/admin/addMr">Добавить мероприятие</a>
+            <a class="nav-link" href="/admin/mrTypeList">Список типов мероприятий</a>
+            <a class="nav-link" href="/admin/mrList">Список мероприятий</a>
+            <a class="nav-link" href="/admin/requestsList">Заявки на мероприятия</a>
+            <a class="nav-link" href="/admin/usersListPage">Пользователи</a>
+            <a class="nav-link" href="/admin/addUserPage">Добавить пользователя</a>
+            <a class="nav-link" href="/logout">Выйти</a>
+        </nav>
+    </div>
+</header>
+
+<div class="container">
+    <h2 class="text-center mt-5 mb-3">Заявки на мероприятия</h2>
+    <br>
+    <br>
+    <a href="/admin/requestsListTrue">Принятые заявки</a>
+    <br>
+    <br>
+    <table class="table">
+        <thead>
+        <tr>
+            <th>Имя пользователя</th>
+            <th>Мероприятие</th>
+            <th>Принять</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="mrUser : ${mrUser}">
+            <td th:text="${mrUser.user.userLogin}"></td>
+            <td th:text="${mrUser.mr.mrName}"></td>
+            <td>
+                <form action="/admin/acceptRequest" method="post">
+                    <input type="hidden" name="id" th:value="${mrUser.id}">
+                    <button type="submit" class="btn btn-success">Принять</button>
+                </form>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+<footer>
+    <div class="container">
+        <p>Контактная информация: +375447860021</p>
+    </div>
+</footer>
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
