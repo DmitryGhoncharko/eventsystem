@@ -1,7 +1,6 @@
 package com.example.shopshoesspring.auth.config.auth;
 
-import com.example.shopshoesspring.entity.UserRole;
-import jakarta.servlet.FilterChain;
+
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
@@ -9,7 +8,7 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.web.authentication.SavedRequestAwareAuthenticationSuccessHandler;
 
 import java.io.IOException;
-import java.security.Principal;
+
 
 public class AuthSuccessHandler extends SavedRequestAwareAuthenticationSuccessHandler {
     @Override

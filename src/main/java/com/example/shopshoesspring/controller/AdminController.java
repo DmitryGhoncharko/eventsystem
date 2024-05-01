@@ -60,8 +60,16 @@ public class AdminController {
 
     @GetMapping("/deleteType/{id}")
     public String deleteType(@PathVariable Long id) {
-        mrTypeRepository.deleteById(id);
+        try{
+            mrTypeRepository.deleteById(id);
+        }catch (Throwable e){
+            return "redirect:/admin/deleteTypeMessage";
+        }
         return "redirect:/admin/mrTypeList";
+    }
+    @GetMapping("/deleteTypeMessage")
+    public String deleteTypeMessage() {
+        return "/error/deleteTypeMessage";
     }
 
     @PostMapping("/updateType/{id}")
@@ -116,7 +124,11 @@ public class AdminController {
     }
     @GetMapping("/deleteMr/{id}")
     public String deleteMr(@PathVariable Long id) {
-        mrRepository.deleteById(id);
+        try{
+            mrRepository.deleteById(id);
+        }catch (Throwable e){
+            return "redirect:/admin/deleteTypeMessage";
+        }
         return "redirect:/admin/mrList";
     }
 

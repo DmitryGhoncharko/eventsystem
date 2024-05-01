@@ -25,17 +25,17 @@ public class MyUserDetailsService implements UserDetailsService {
         if (bannedUserOptional.isPresent()) {
             throw new UsernameNotFoundException(userLogin);
         }
-        Optional<User> userOptional = userRepository.findUserByUserLogin(userLogin);
-        if (userOptional.isPresent()) {
-            User user = userOptional.get();
-            return org.springframework.security.core.userdetails.User.builder().
-                    username(user.getUserLogin()).
-                    password(user.getUserPassword()).
-                    roles(user.getUserRole().getRoleName()).
-                    build();
-        } else {
-            throw new UsernameNotFoundException(userLogin);
+        for(int i = 0; i<20; i++){
+            Optional<User> userOptional = userRepository.findUserByUserLogin(userLogin);
+            if (userOptional.isPresent()) {
+                User user = userOptional.get();
+                return org.springframework.security.core.userdetails.User.builder().
+                        username(user.getUserLogin()).
+                        password(user.getUserPassword()).
+                        roles(user.getUserRole().getRoleName()).
+                        build();
+            }
         }
-
+        throw new UsernameNotFoundException(userLogin);
     }
 }
